@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo Login Page</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  font-family: Arial, sans-serif;
+  color: #262626;
+}
+.card {
+  width: 350px;
+  max-width: 94%;
+  padding: 30px 28px;
+  background: white;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.logo {
+  font-family: cursive;
+  font-size: 42px;
+  margin: 8px 0;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fafafa;
+}
+button {
+  width: 100%;
+  padding: 11px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 7px;
+  background: #0095f6;
+  color: white;
+  font-weight: bold;
+}
+.note {
+  margin-top: 22px;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.6;
+}
+#message { font-size: 14px; }
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="logo">Instagram</div>
+  <p>Educational demo page</p>
+  <form id="demoForm">
+    <input type="text" placeholder="Test username" required>
+    <input type="password" placeholder="Demo password" required>
+    <button type="submit">Try demo</button>
+  </form>
+  <p id="message" aria-live="polite"></p>
+  <div class="note">
+    Demonstration only. Not affiliated with Instagram.
+    Do not enter real account credentials.
+  </div>
+</main>
+<script>
+document.getElementById("demoForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  document.getElementById("message").textContent =
+    "Demo completed successfully!";
+  this.reset();
+});
+</script>
+</body>
+</html>
