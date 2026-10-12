@@ -4,9 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demo Login Page</title>
+<title>Social Login Demo</title>
 <style>
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -17,61 +18,149 @@ body {
   font-family: Arial, sans-serif;
   color: #262626;
 }
-.card {
+
+.wrapper {
   width: 350px;
   max-width: 94%;
-  padding: 30px 28px;
-  background: white;
-  border: 1px solid #ddd;
   text-align: center;
 }
+
+.card {
+  background: white;
+  border: 1px solid #dbdbdb;
+  padding: 34px 38px 24px;
+}
+
 .logo {
   font-family: cursive;
   font-size: 42px;
-  margin: 8px 0;
+  margin: 0 0 26px;
+  letter-spacing: -2px;
 }
+
+.demo-tag {
+  color: #737373;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
 input {
   width: 100%;
-  padding: 12px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  height: 40px;
+  margin-bottom: 7px;
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
   background: #fafafa;
+  font-size: 12px;
 }
+
 button {
   width: 100%;
-  padding: 11px;
-  margin-top: 12px;
+  height: 34px;
+  margin-top: 8px;
   border: 0;
-  border-radius: 7px;
+  border-radius: 8px;
   background: #0095f6;
   color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 22px 0;
+  color: #737373;
+  font-size: 12px;
   font-weight: bold;
 }
-.note {
-  margin-top: 22px;
-  color: #777;
-  font-size: 12px;
-  line-height: 1.6;
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #dbdbdb;
 }
-#message { font-size: 14px; }
+
+.secondary {
+  background: transparent;
+  color: #385185;
+  margin: 0;
+}
+
+.forgot {
+  display: block;
+  margin-top: 20px;
+  color: #00376b;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.notice {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  background: #fff;
+  color: #737373;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#message {
+  font-size: 13px;
+  color: #16803d;
+}
+
+@media (max-width: 450px) {
+  body { background: white; }
+  .card { border: none; padding: 28px 24px; }
+}
 </style>
 </head>
 <body>
-<main class="card">
-  <div class="logo">Instagram</div>
-  <p>Educational demo page</p>
-  <form id="demoForm">
-    <input type="text" placeholder="Test username" required>
-    <input type="password" placeholder="Demo password" required>
-    <button type="submit">Try demo</button>
-  </form>
-  <p id="message" aria-live="polite"></p>
-  <div class="note">
-    Demonstration only. Not affiliated with Instagram.
-    Do not enter real account credentials.
-  </div>
+<main class="wrapper">
+  <section class="card">
+    <h1 class="logo">Instagram</h1>
+    <p class="demo-tag">Independent design demo</p>
+
+    <form id="demoForm">
+      <input
+        type="text"
+        placeholder="Test username"
+        aria-label="Test username"
+        required
+      >
+      <input
+        type="password"
+        placeholder="Demo password"
+        aria-label="Demo password"
+        required
+      >
+      <button type="submit">Try demo</button>
+    </form>
+
+    <p id="message" aria-live="polite"></p>
+
+    <div class="divider">OR</div>
+
+    <button class="secondary" type="button"
+      onclick="document.getElementById('message').textContent='Social login is not connected in this demo.'">
+      Continue with a demo account
+    </button>
+
+    <a class="forgot" href="#demo-info">Forgot password?</a>
+  </section>
+
+  <section class="notice" id="demo-info">
+    Demo page only. Not affiliated with Instagram.
+    Never enter your real Instagram password here.
+  </section>
 </main>
+
 <script>
 document.getElementById("demoForm").addEventListener("submit", function(e) {
   e.preventDefault();
